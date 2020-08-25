@@ -1,0 +1,20 @@
+{
+  "name": "docker-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "docker build -t project-docker-node . && docker run --rm -it -p 3000:3000 project-docker-node"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^20.0.0",
+    "@hapi/inert": "^6.0.2",
+    "@hapi/vision": "^6.0.1",
+    "hapi": "^18.1.0",
+    "hapi-swagger": "^14.0.0",
+    "joi": "^17.2.1"
+  }
+}
