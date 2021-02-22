@@ -1,0 +1,33 @@
+version: '3'
+# networks: 
+#   default:
+#   name: app-ek
+services:
+ web:
+  build: server/
+  command: node ./server.js
+  # unvicorn main:app --reload --host 0.0.0.0 --port 27689
+  # "docker build -t project-docker-node . && docker run --rm -it -p 3000:3000 project-docker-node"
+  ports:
+  - 3000:3000
+  # volumes:
+  # - .:/app
+  depends_on: 
+  - db
+ db:
+  image: postgres:12-alpine
+  ports:
+  - 5432:5432
+  environment:
+  - POSTGRES_USER=ekaterina
+  - POSTGRES_PASSWORD=ekaterina
+  - POSTGRES_DB=db_postgres
+ pgAdmin:
+  image: dpage/pgadmin4:4.22
+  depends_on: 
+  - db
+  ports:
+  - 16555:80
+  environment:
+  - PGADMIN_DEFAULT_EMAIL=ekaterina@mail.ru
+  - PGADMIN_DEFAULT_PASSWORD=ekaterina
